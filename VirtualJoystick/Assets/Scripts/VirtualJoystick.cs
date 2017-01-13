@@ -8,6 +8,11 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler,
     public Image ImgJoystick;
 
     private Vector3 _inputVector;
+    public Vector3 InputVector {
+        get {
+            return _inputVector;
+        }
+    }
 
 
     public void OnPointerDown(PointerEventData e) {
@@ -27,8 +32,8 @@ public class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler,
             _inputVector = new Vector3(pos.x * 2 + 1, 0, pos.y * 2 -1);
             _inputVector = (_inputVector.magnitude > 1.0f) ? _inputVector.normalized : _inputVector;
 
-            ImgJoystick.rectTransform.anchoredPosition = new Vector3(_inputVector.x * (ImgBg.rectTransform.sizeDelta.x * .5f),
-                                                                     _inputVector.z * (ImgBg.rectTransform.sizeDelta.y * .5f));
+            ImgJoystick.rectTransform.anchoredPosition = new Vector3(_inputVector.x * (ImgBg.rectTransform.sizeDelta.x * .4f),
+                                                                     _inputVector.z * (ImgBg.rectTransform.sizeDelta.y * .4f));
         }
     }   
 
